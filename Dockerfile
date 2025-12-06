@@ -4,7 +4,7 @@ ADD install-nix.sh /tmp/install-nix.sh
 RUN /tmp/install-nix.sh
 RUN pip install "cocotb~=2.0"  --break-system-packages
 
-RUN useradd -ms /bin/bash newuser
+RUN useradd -ms /bin/bash designer
 USER designer
 
 ENTRYPOINT ["/bin/bash", "-l"]
