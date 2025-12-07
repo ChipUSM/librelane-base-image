@@ -6,7 +6,7 @@ ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
 RUN groupadd --gid $USER_GID $USERNAME \
-    && useradd --create-home --no-log-init --uid $USER_UID --gid $USER_GID $USERNAME \
+    && useradd -m -s /bin/bash --create-home --no-log-init --uid $USER_UID --gid $USER_GID $USERNAME \
     && echo "designer ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/designer
 
 #RUN useradd --uid $USER_UID --gid $USER_GID $USERNAME \
