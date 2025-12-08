@@ -1,5 +1,5 @@
 FROM ubuntu:22.04
-RUN apt-get update && apt-get install -y python3 python3-pip curl systemd git sudo wget flex bison autoconf help2man
+RUN apt-get update && apt-get install -y python3 python3-pip curl systemd git sudo wget flex bison autoconf help2man unzip
 
 ARG USERNAME=designer
 ARG USER_UID=1000
@@ -54,5 +54,11 @@ RUN wget https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2
     && rm riscv64-elf-ubuntu-22.04-gcc.tar.xz 
 
 ENV PATH=$PATH:/home/designer/riscv/bin/
+
+#Surfer
+RUN wget https://gitlab.com/api/v4/projects/42073614/packages/generic/surfer/v0.3.0/surfer_linux_v0.3.0.zip \
+    && unzip surfer_linux_v0.3.0.zip -d /usr/local/bin/ \
+    && rm surfer_linux_v0.3.0.zip
+
 
 ENTRYPOINT ["/bin/bash", "-l"]
