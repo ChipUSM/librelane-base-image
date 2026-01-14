@@ -35,11 +35,11 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ghcr.io/chipusm/librelane-base-image:latest-${{ matrix.arch }} .
+          docker build -t ghcr.io/chipubb/librelane-base-image:latest-${{ matrix.arch }} .
 
       - name: Push Docker image
         run: |
-          docker push ghcr.io/chipusm/librelane-base-image:latest-${{ matrix.arch }}
+          docker push ghcr.io/chipubb/librelane-base-image:latest-${{ matrix.arch }}
 
   build-final:
     needs: build-and-push-archs
@@ -60,10 +60,10 @@ jobs:
 
       - name: Create unified manifest
         run: |
-          docker manifest create ghcr.io/chipusm/librelane-base-image:latest \
-            ghcr.io/chipusm/librelane-base-image:latest-amd64 \
-            ghcr.io/chipusm/librelane-base-image:latest-arm64
+          docker manifest create ghcr.io/chipubb/librelane-base-image:latest \
+            ghcr.io/chipubb/librelane-base-image:latest-amd64 \
+            ghcr.io/chipubb/librelane-base-image:latest-arm64
 
       - name: Push Docker image
         run: |
-          docker manifest push ghcr.io/chipusm/librelane-base-image:latest
+          docker manifest push ghcr.io/chipubb/librelane-base-image:latest
